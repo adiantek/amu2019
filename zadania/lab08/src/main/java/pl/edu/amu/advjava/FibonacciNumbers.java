@@ -17,20 +17,26 @@ final class FibonacciNumbersExercise {
      *   ZADANIE: dopasuj implementację wyrażenia lambda tak, żeby generowało kolejne liczby ciągu Fibonacciego.
      */
     static int[] generateFibonacciNumbersWithLambda(int n) {
+        final int[] tab = new int[]{0, 1};
         return IntStream.generate(() -> {
-            // TODO add implementation here
-            throw new UnsupportedOperationException("Not yet implemented");
+            int sum = tab[0] + tab[1];
+            tab[0] = tab[1];
+            tab[1] = sum;
+            return tab[0];
         }).limit(n).toArray();
     }
-
 }
 
 final class FibonacciSupplier implements IntSupplier {
 
+    private int a = 0, b = 1;
+
     @Override
     public int getAsInt() {
-        // TODO add implementation here
-        throw new UnsupportedOperationException("Not yet implemented");
+        int sum = a + b;
+        a = b;
+        b = sum;
+        return a;
     }
 }
 
